@@ -1,25 +1,36 @@
 {
-  "name": "covid-19-estimator-js",
-  "version": "1.0.0",
-  "repository": "git@github.com:BuildforSDG-Cohort1-Assessment/covid-19-estimator-js.git",
-  "license": "MIT",
-  "private": false,
-  "scripts": {
-    "lint": "eslint ./src/"
-  },
-  "dependencies": {
-    "on-covid-19": "^0.1.3"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "babel-jest": "^25.2.0",
-    "jest": "^25.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.1"
-  },
-  "browserslist": [
-    "last 1 Chrome versions"
-  ]
+	"name": "covid-19-estimator-js",
+	"version": "1.0.0",
+	"repository": "git@github.com:BuildforSDG-Cohort1-Assessment/covid-19-estimator-js.git",
+	"license": "MIT",
+	"private": false,
+	"scripts": {
+		"lint": "eslint ./src/ --fix",
+		"clean": "rm -rf build && mkdir build",
+		"build-babel": "babel -d ./build ./src -s --ignore client --copy-files",
+		"start": "node ./build/server/server.js",
+		"build": "npm run clean && npm run build-babel",
+		"start:dev": "nodemon --exec babel-node ./src/server/server.js"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-validator": "^6.4.0",
+		"on-covid-19": "^0.1.3",
+		"xml-js": "^1.6.11"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.8.4",
+		"@babel/core": "^7.9.0",
+		"@babel/node": "^7.8.7",
+		"@babel/preset-env": "^7.9.0",
+		"babel-jest": "^25.2.0",
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb-base": "^14.0.0",
+		"eslint-plugin-import": "^2.20.1",
+		"jest": "^25.2.0"
+	},
+	"browserslist": [
+		"last 1 Chrome versions"
+	]
 }
